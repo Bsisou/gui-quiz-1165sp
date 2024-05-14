@@ -1,38 +1,77 @@
-import tkinter as tk #importing tkinter
+from tkinter import *
 
-import random #importing random module
+from PIL import Image, ImageTk
 
-import PIL #importing Python Image library Module
-
-from PIL import Image, ImageTk #importing Image and ImageTk from Pillow
-
+import random
 
 names = []
 global questions_answers
-asked = [] 
-score = 0
+asked=[]
+score=0
 
-root = tk.Tk()
-root.title("Anime Quiz")
+class Quizstarter:
+  def __init__(self, parent): 
+    background_color="OldLace"
+    self.quiz_frame=Frame(parent, bg = "grey", padx=100, pady=100) #"The Frame"
+    self.quiz_frame.grid()
 
-class Quiz:
-    def __init__(Welcome, parent):
-        Welcome.quiz_frame=Frame(parent, bg = '#FFAF45')
-        Welcome.quiz_frame.grid()    
+    self.heading_label=Label(self.quiz_frame, text="The Glorious Anime Quiz!", bg="yellow") #Title of quiz
+    self.heading_label.grid(row=0, padx=20)
 
-        Welcome = tk.Canvas(root, width=640, height=480)
-        Welcome.configure(bg='#FFAF45')
+    #Entry Box Label
+    self.user_label=Label(self.quiz_frame, text="Enter your name: ", bg="red")
+    self.user_label.grid(row=1, padx=20, pady=20)
 
-        label1 = tk.Label(root, text="The Glorious Anime Quiz!")
-        label1.config(font=("courier new", 20), bg=('#FFAF45'))
-        Welcome.create_window(200, 35, window=label1)
+    #The Entry Box
+    self.entry_box=Entry(self.quiz_frame) 
+    self.entry_box.grid(row=2, padx=20, pady=20)
 
-        label2 = tk.Label(root, text="Enter Your Name Here")
-        label2.config(font=("courier new", 10), bg=('#FFAF45'))
-        Welcome.create_window(200, 100, window=label2)
+    #The Continue Button
+    self.continue_button = Button(self.quiz_frame, text="Continue", bg="yellow")
+    self.continue_button.grid(row=3, padx=20, pady=20)
 
-        entry = tk.Entry(root)
-        Welcome.create_window(200, 140, window=entry)
-        Welcome.pack()
+if __name__ == "__main__":
+  root = Tk()
+  root.title("Quiz :)")
+  root.geometry("350x500")
+  quiz_instance = Quizstarter(root)
+  quiz_starter_object = Quizstarter(root) #instantiation, making an instance of the class Quiz
 
-root.mainloop()
+  def name_collection(self):
+    name=self.entry_box.get()
+    name.append(name) 
+    self.quiz_frame.destroy()
+    Quiz(root)
+  
+  # So the window doesn't disappear
+  root.mainloop() 
+
+def randomiser():
+  global qnum
+  qnum = random.randint(1,10)
+  if qnum not in asked:
+    asked.append(qnum)
+  elif qnum in asked:
+    randomiser()
+
+randomiser()
+
+randomiser()
+if __name__ == "__main__":
+  root = Tk()
+  root.title("Nz Road Rules Quiz")
+  quiz_instance = Quizstarter(root)
+  root.mainloop
+
+
+    
+
+
+
+
+
+
+
+
+
+

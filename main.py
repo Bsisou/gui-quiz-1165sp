@@ -9,13 +9,20 @@ global questions_answers
 asked=[]
 score=0
 
-class Quizstarter:
+class Quizstarter: 
   def __init__(self, parent): 
     background_color="OldLace"
     self.quiz_frame=Frame(parent, bg = "grey", padx=100, pady=100) #"The Frame"
     self.quiz_frame.grid()
+    self.bg_image = Image.open("Image1.png") # V background image V
+    self.bgimage = self.bg_image.resize((350, 500), Image.LANCZOS)
+    self.bg_image = ImageTk.PhotoImage(self.bg_image)
+    self.bg_image = PhotoImage(file="Image1.png")
 
-    self.heading_label=Label(self.quiz_frame, text="The Glorious Anime Quiz!", bg="yellow") #Title of quiz
+    self.image_label = Label(self.quiz_frame, image=self.bg_image) # Label for background image
+    self.image_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+    self.heading_label=Label(self.quiz_frame, text="The Glorious Anime Quiz!", bg="orange") #Title of quiz
     self.heading_label.grid(row=0, padx=20)
 
     #Entry Box Label

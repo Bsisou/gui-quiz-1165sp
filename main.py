@@ -66,7 +66,7 @@ randomiser()
 randomiser()
 if __name__ == "__main__":
   root = Tk()
-  root.title("Nz Road Rules Quiz")
+  root.title("Anime Quiz!")
   quiz_instance = Quizstarter(root)
   root.mainloop
 

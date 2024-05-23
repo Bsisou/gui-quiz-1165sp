@@ -4,12 +4,14 @@ from PIL import Image, ImageTk
 
 import random
 
-names = []
-global questions_answers
-asked=[]
-score=0
+from quiz_questions import quiz_questions
 
-class Quizstarter: 
+collected_names = []
+global questions_answers
+questions=[]
+current_score=0
+
+class Quiz: 
   def __init__(main, parent): 
     background_color="OldLace"
     main.quiz_frame=Frame(parent, padx=100, pady=100) #"The Frame"
@@ -37,18 +39,21 @@ class Quizstarter:
     main.continue_button = Button(main.quiz_frame, text="Continue", bg="yellow")
     main.continue_button.grid(row=3, padx=20, pady=20)
 
+    #value for radio buttons for questions
+    main.var1=IntVar()
+
 if __name__ == "__main__":
   WelcomeW = Tk()
   WelcomeW.title("Anime Quiz :)")
   WelcomeW.geometry("350x500")
-  quiz_instance = Quizstarter(WelcomeW)
-  quiz_starter_object = Quizstarter(WelcomeW) #instantiation, making an instance of the class Quiz
+  quiz_instance = Quiz(WelcomeW)
+  quiz_starter_object = Quiz(WelcomeW) #instantiation, making an instance of the class Quiz
   WelcomeW.mainloop
   
 
-  def name_collection(main):
-    name=main.entry_box.get()
-    name.append(name) 
+  def collected_names(main):
+    main=main.entry_box.get()
+    main.append(collected_names) 
     main.quiz_frame.destroy()
     Quiz(WelcomeW)
   
@@ -56,10 +61,10 @@ if __name__ == "__main__":
 WelcomeW.mainloop() 
 
 def randomiser():
-  global qnum
-  qnum = random.randint(1,10)
-  if qnum not in asked:
-    asked.append(qnum)
-  elif qnum in asked:
+  global questionnumber
+  questionnumber = random.randint(1,10)
+  if questionnumber not in asked:
+    asked.append(questionnumber)
+  elif questionnumber in asked:
     randomiser()
 

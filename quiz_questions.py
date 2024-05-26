@@ -1,6 +1,6 @@
 # Quiz Questions Components 
 
-quiz_questions = [
+questions = [
     {
 
        "question": "(One Piece) - Where was the character Luffy born?",

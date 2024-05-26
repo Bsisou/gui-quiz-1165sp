@@ -10,7 +10,8 @@ if __name__ == "__main__":
     page.geometry("350x180")
     page.configure(background="#FFAF45")
     
-    #Title for Instruction Page
+#------------------------------------------------------
+#Title for Instruction Page
     Title = tk.Label(page, 
                   text="Welcome!", 
                   background="#FFAF45"

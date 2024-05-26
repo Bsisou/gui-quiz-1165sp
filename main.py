@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 
 import random
 
-from quiz_questions import quiz_questions
+from quiz_questions import questions
 
 collected_names = []
 global questions_answers

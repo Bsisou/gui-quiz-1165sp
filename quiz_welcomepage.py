@@ -34,7 +34,7 @@ if __name__ == "__main__":
 # Main Quiz Instructions
     instructions = tk.Label(page, 
                             text = 
-    "Welcome to the Anime Quiz! \n You will be answering 25 randomised questions. \n These Questions will originate from popular Animes such as; \n One Piece, My Hero Acadamia and Naruto")
+    "Welcome to the Anime Quiz! \n You will be answering 25 randomised anime questions. \n These Questions will originate from popular Animes such as; \n One Piece, My Hero Acadamia and Naruto \n Good Luck :)")
     instructions.config(font = "Courier 7", 
                         foreground = "#FB6D48", 
                         background = "#673F69")

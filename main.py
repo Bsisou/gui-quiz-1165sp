@@ -36,7 +36,7 @@ class Quiz:
     main.entry_box.grid(row=2, padx=20, pady=20)
 
     #The Continue Button
-    main.continue_button = Button(main.quiz_frame, text="Continue", bg="yellow")
+    main.continue_button = Button(main.quiz_frame, text="Continue", bg="yellow", command=collected_names)
     main.continue_button.grid(row=3, padx=20, pady=20)
 
     #value for radio buttons for questions

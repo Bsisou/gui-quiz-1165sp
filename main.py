@@ -1,70 +1,100 @@
 from tkinter import *
 
+import tkinter as tk
+
 from PIL import Image, ImageTk
 
-import random
+#------------------------------------------------------
+# Welcome Page
 
-from quiz_questions import questions
+class welcomepage:
+    def __init__(self, master):
+#------------------------------------------------------
+# Title
+        welcome_title: Label = Label(master, text= "Anime Quiz!")
+        welcome_title.place(x=230, y=100)
+        welcome_title.config(font = "Courier 25 bold", 
+                             foreground = "#FB6D48", 
+                             background = "#FFAF45")
 
-collected_names = []
-global questions_answers
-questions=[]
-current_score=0
+#------------------------------------------------------
+# Entry box
+        self.entrybox = Entry(master)
+        self.entrybox.place(x= 270, y=195)
+        self.entrybox.insert(0, "Enter your name here")
 
-class Quiz: 
-  def __init__(main, parent): 
-    background_color="OldLace"
-    main.quiz_frame=Frame(parent, padx=100, pady=100) #"The Frame"
-    main.quiz_frame.grid()
-    main.bg_image = Image.open("Image1.png") # Background image
-    main.bgimage = main.bg_image.resize((350, 500), Image.LANCZOS)
-    main.bg_image = ImageTk.PhotoImage(main.bg_image)
-    main.bg_image = PhotoImage(file="Image1.png")
+#------------------------------------------------------
+# Continue Button
+        continue_button: Button = Button(master, text= "Continue", 
+                                         command = instructions)
+        continue_button.config(font = "Courier 9", 
+                                background = "#D74B76", 
+                                foreground = "#FB6D48", 
+                                height = 1, 
+                                width = 15)
+        continue_button.place(x=275, y=240)
 
-    main.image_label = Label(main.quiz_frame, image=main.bg_image) # Label for background image
-    main.image_label.place(x=0, y=0, relwidth=1, relheight=1)
-   
-    main.heading_label=Label(main.quiz_frame, text="The Glorious Anime Quiz!", bg="orange") #Title of quiz
-    main.heading_label.grid(row=0, padx=20)
+#------------------------------------------------------
+#Main window for instruction page
+def instructions():
+        master.destroy()
+        page = tk.Tk()
+        page.title("Anime Quiz! (Instructions)")
+        page.geometry("350x180")
+        page.configure(background="#FFAF45")
 
-    #Entry Box Label
-    main.user_label=Label(main.quiz_frame, text="Enter your name: ", bg="red") 
-    main.user_label.grid(row=1, padx=20, pady=20)
+#------------------------------------------------------
+#Title for Instruction Page
+        Title = tk.Label(page, 
+                         text = "Welcome", 
+                         background = "#FFAF45")
+        Title.config(font = "Courier 17", 
+                     foreground = "#FB6D48")
+        Title.pack()
 
-    #The Entry Box
-    main.entry_box=Entry(main.quiz_frame) 
-    main.entry_box.grid(row=2, padx=20, pady=20)
+#------------------------------------------------------
+# Users name (stored name from welcomepage class)
+        name = tk.Label(page, 
+                        text = "(Users Name)",)
+        name.config(font = "Courier 12", 
+                    foreground = "#D74B76",
+                    background = "#FFAF45")
+        name.pack(pady = 10)
 
-    #The Continue Button
-    main.continue_button = Button(main.quiz_frame, text="Continue", bg="yellow", command=collected_names)
-    main.continue_button.grid(row=3, padx=20, pady=20)
+#------------------------------------------------------
+# Main Quiz Instructions 
+        instructions = tk.Label(page, 
+                                text = 
+  "Welcome to the Anime Quiz! \n You will be answering 25 randomised anime questions. \n These Questions will originate from popular Animes such as; \n One Piece, My Hero Acadamia and Naruto \n Good Luck! :)")                              )
+        instructions.config(font = "Courier 7",
+                            foreground = "#FB6D48", 
+                            background = "#673F69")
+        instructions.pack
 
-    #value for radio buttons for questions
-    main.var1=IntVar()
+#------------------------------------------------------
+# Continue Button
+        Continue = tk.Button(page, 
+                             text = "Continue")
+        Continue.config(font = "Courier 9", 
+                        background = "#D74B76", 
+                        foreground = "#FB6D48", 
+                        height = 1, 
+                        width = 15)
+        Continue.pack(pady = 10)
+
+        page.mainloop
+
+#------------------------------------------------------
+# Start of code
 
 if __name__ == "__main__":
-  WelcomeW = Tk()
-  WelcomeW.title("Anime Quiz :)")
-  WelcomeW.geometry("350x500")
-  quiz_instance = Quiz(WelcomeW)
-  quiz_starter_object = Quiz(WelcomeW) #instantiation, making an instance of the class Quiz
-  WelcomeW.mainloop
-  
+    master = Tk()
+    master.title("Anime Quiz!")
+    master.geometry("640x360")
+    master.config(bg = "#FFAF45")
+    welcomepage(master)
+    master.mainloop()
 
-  def collected_names(main):
-    main=main.entry_box.get()
-    main.append(collected_names) 
-    main.quiz_frame.destroy()
-    Quiz(WelcomeW)
-  
-  # So the window doesn't disappear
-WelcomeW.mainloop() 
 
-def randomiser():
-  global questionnumber
-  questionnumber = random.randint(1,10)
-  if questionnumber not in asked:
-    asked.append(questionnumber)
-  elif questionnumber in asked:
-    randomiser()
 
+        

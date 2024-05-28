@@ -2,7 +2,9 @@ from tkinter import *
 
 import tkinter as tk
 
-from PIL import Image, ImageTk
+import PIL
+
+from tkinter import PhotoImage
 
 #------------------------------------------------------
 # Welcome Page
@@ -33,7 +35,7 @@ class welcomepage:
                                 height = 1, 
                                 width = 15)
         continue_button.place(x=275, y=240)
-
+        
 #------------------------------------------------------
 #Main window for instruction page
 def instructions():
@@ -64,7 +66,10 @@ def instructions():
 #------------------------------------------------------
 # Main Quiz Instructions 
         steps = tk.Label(page, text = "Welcome to the Anime Quiz! \n You will be answering 25 randomised anime questions. \n These Questions will originate from popular Animes such as; \n One Piece, My Hero Acadamia and Naruto \n Good Luck! :)")
+        steps.config(background = "#673F69", 
+                     foreground = "#FB6D48")
         steps.pack(pady = 10)
+
 #------------------------------------------------------
 # Continue Button
         Continue = tk.Button(page, 
@@ -85,7 +90,9 @@ if __name__ == "__main__":
     master = Tk()
     master.title("Anime Quiz!")
     master.geometry("640x360")
-    master.config(bg = "#FFAF45")
+    image_path = PhotoImage(file="Image1.png")
+    bg_image = tk.Label(master, image = image_path)
+    bg_image.place(relheight=1, relwidth=1)
     welcomepage(master)
     master.mainloop()
 

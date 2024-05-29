@@ -71,7 +71,8 @@ def instructions():
 #------------------------------------------------------
 # Continue Button
         Continue = tk.Button(page, 
-                             text = "Continue")
+                             text = "Continue", 
+                             command = questions)
         Continue.config(font = "Courier 9", 
                         background = "#D74B76", 
                         foreground = "#FB6D48", 
@@ -82,7 +83,27 @@ def instructions():
         page.mainloop
 
 #------------------------------------------------------
-# Start of code
+# Start of questions
+
+def questions():
+        master.destroy
+        questions = tk.Tk()
+        questions.title("Anime Quiz! (Questions)")
+        questions.geometry("640x360")
+        questions.configure(background="#FFAF45")
+
+#------------------------------------------------------
+# Start of questions
+        questions = tk.Label(questions, text = "Question #1")
+        questions.pack()
+
+
+
+
+
+        questions.mainloop
+#------------------------------------------------------
+# ..
 
 if __name__ == "__main__":
     master = Tk()

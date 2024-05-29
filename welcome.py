@@ -4,6 +4,8 @@ import tkinter as tk
 
 from tkinter import PhotoImage
 
+from quiz_questions import questions
+
 #------------------------------------------------------
 # Welcome Page
 
@@ -85,6 +87,12 @@ def instructions():
 #------------------------------------------------------
 # Start of questions
 
+def answer_check():
+      pass
+
+def next():
+      pass
+
 def questions():
         master.destroy
         questions = tk.Tk()
@@ -94,14 +102,34 @@ def questions():
 
 #------------------------------------------------------
 # Start of questions
-        questions = tk.Label(questions, text = "Question #1")
+
+        questions = tk.Label(questions, 
+                             text = "Question #1", 
+                             bg = "#FFAF45")
+        questions.config(font = "Courier 17", 
+                     foreground = "#FB6D48")
         questions.pack()
 
+        choices = []
+        for i in range(4):
+              choice_button = tk.Button(questions, 
+                                        command = lambda i=i: answer_check(i)
+                                        )
+              choice_button.pack(pady = 10)
+              choices.append(choice_button)
+        
+        correct_incorrect = tk.Label(questions)
+        correct_incorrect.pack(pady = 10)
 
-
-
-
-        questions.mainloop
+        scoreL = tk.Label(questions, 
+                          text = "score: 0/{}".format(len(questions))
+                          )
+        scoreL.pack()
+        
+        next_question = tk.Button(questions, 
+                                  text = "Next Question", 
+                                  command = next)
+        next_question.pack(pady = 10)
 #------------------------------------------------------
 # ..
 

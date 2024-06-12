@@ -4,7 +4,7 @@ import tkinter as tk
 
 from tkinter import PhotoImage
 
-from quiz_questions import questions
+from quiz_questions import quiz_questions
 
 #------------------------------------------------------
 # Welcome Page
@@ -24,6 +24,8 @@ class welcomepage:
         self.entrybox = Entry(master)
         self.entrybox.place(x= 270, y=195)
         self.entrybox.insert(0, "Enter your name here")
+        global username
+        username = self.entrybox.get()
 
 #------------------------------------------------------
 # Continue Button
@@ -57,7 +59,7 @@ def instructions():
 #------------------------------------------------------
 # Users name (stored name from welcomepage class)
         name = tk.Label(page, 
-                        text = "(Users Name)",)
+                        text = "Users Name + (username)")
         name.config(font = "Courier 12", 
                     foreground = "#D74B76",
                     background = "#FFAF45")

@@ -1,6 +1,6 @@
 # Quiz Questions Components 
 
-questions = [
+quiz_questions = [
     {
 
        "question": "(One Piece) - Where was the character Luffy born?",
@@ -27,6 +27,12 @@ questions = [
         "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
         "answer": "Shanks"
     },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+    
   
   
 ]

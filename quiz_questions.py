@@ -32,6 +32,101 @@ quiz_questions = [
         "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
         "answer": "Shanks"
     },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+     {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
+      {
+       "question": "(One Piece) - Which character gifted Luffy his Straw hat?", 
+        "options": ["Usopp", "Brook", "Shanks", "Kin'emon"],
+        "answer": "Shanks"
+    },
     
   
   

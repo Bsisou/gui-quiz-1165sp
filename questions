@@ -2,5 +2,84 @@ from tkinter import *
 
 import tkinter as tk 
 
+from tkinter import messagebox
+
 from quiz_questions import quiz_questions
 
+def check_answer(choice):
+    question = quiz_questions[current_question]
+    selected_choice = choice_buttons[choice].cget("text")
+
+    if selected_choice == question["answer"]:
+
+        global score
+        score +=1
+        score_label.config(text="Score: {}/{}".format(score, len(quiz_questions)))
+        feedback_label.config(text = "Correct", fg = "orange")
+
+    else:
+        feedback_label.config(text = "Incorrect", fg = "red")
+
+    for button in choice_buttons:
+        button.config(state="disabled")
+    next_button.config(state = "normal")
+
+def next_question():
+    global current_question
+    current_question +=1
+    
+    if current_question < len(quiz_questions):
+
+        show_question()
+    else: 
+        messagebox.showinfo("The Anime Quiz is complete!", "Anime Quiz is completed! Your score was: {}/{}".format(score, len(quiz_questions)))
+
+def show_question():
+    question = quiz_questions[current_question]
+    question_label.config(text=question["question"])
+
+    choices = question["choices"]
+    for i in range(4):
+        choice_buttons[i].config(text=choices[i], state = "normal")
+
+        feedback_label.config(text = "")
+
+score = 0
+current_question = 0
+
+master = tk.Tk
+master.title("Anime Quiz! (Questions)")
+master.geometry("640x350")
+
+question_label = tk.Label(master, 
+                          anchor = "center", 
+                          wraplength = 350, 
+                          padding = 10)
+question_label.pack
+
+choice_buttons = [] 
+for i in range (4):
+    button = tk.Button(master, 
+                       command = lambda i=i: check_answer(i))
+    button.pack
+    choice_buttons.append(button)
+
+feedback_label = tk.Label(master, 
+                          anchor = "center", 
+                          padding = 10)
+feedback_label.pack(pady = 10)
+
+score_label = tk.Label(master, 
+                       text = "Current Score: 0/{}".format(len(quiz_questions)),
+                       anchor = "center", 
+                       padding = 10)
+score_label.pack(pady = 10)
+
+next_button = tk.Button(master, 
+                        text = "Next Question", 
+                        state = "disabled")
+next_button.pack
+
+show_question()
+
+master.mainloop

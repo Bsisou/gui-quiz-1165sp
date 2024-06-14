@@ -22,10 +22,9 @@ class welcomepage:
 #------------------------------------------------------
 # Entry box
         self.entrybox = Entry(master)
+        self.entrybox.get()
         self.entrybox.place(x= 270, y=195)
         self.entrybox.insert(0, "Enter your name here")
-        global username
-        username = self.entrybox.get()
 
 #------------------------------------------------------
 # Continue Button
@@ -89,12 +88,6 @@ def instructions():
 #------------------------------------------------------
 # Start of questions
 
-def answer_check():
-      pass
-
-def next():
-      pass
-
 def questions():
         master.destroy
         questions = tk.Tk()
@@ -103,35 +96,77 @@ def questions():
         questions.configure(background="#FFAF45")
 
 #------------------------------------------------------
-# Start of questions
+# Start of questions:
 
-        questions = tk.Label(questions, 
-                             text = "Question #1", 
+        def check():
+              pass
+
+        question_label = tk.Label(questions, 
+                             text = "Question #XX", 
                              bg = "#FFAF45")
-        questions.config(font = "Courier 17", 
-                     foreground = "#FB6D48")
-        questions.pack()
+        question_label.config(font = "Courier 17", 
+                         fg = "#FB6D48")
+        question_label.pack(pady = 10)
 
-        choices = []
-        for i in range(4):
-              choice_button = tk.Button(questions, 
-                                        command = lambda i=i: answer_check(i)
-                                        )
-              choice_button.pack(pady = 10)
-              choices.append(choice_button)
-        
-        correct_incorrect = tk.Label(questions)
-        correct_incorrect.pack(pady = 10)
+#Question options: 
+        op_1 = IntVar()
+        op_2 = IntVar()
+        op_3 = IntVar()
+        op_4 = IntVar()
 
-        scoreL = tk.Label(questions, 
-                          text = "score: 0/{}".format(len(questions))
-                          )
-        scoreL.pack()
+#Question options:
+        option_1 = tk.Checkbutton(questions, 
+                               text = "(Option #1)", 
+                               variable=op_1)
+        option_1.config(font = "Courier 9", 
+                        bg = "#673F69",
+                        fg = "#FB6D48")
+        option_1.pack(pady = 10)
+
+        option_2 = tk.Checkbutton(questions, 
+                               text = "(Option #2)", 
+                               variable=op_2)
+        option_2.config(font = "Courier 9", 
+                        bg = "#673F69",
+                        fg = "#FB6D48")
+        option_2.pack(pady = 10)
         
-        next_question = tk.Button(questions, 
-                                  text = "Next Question", 
-                                  command = next)
-        next_question.pack(pady = 10)
+        option_3 = tk.Checkbutton(questions, 
+                               text = "(Option #3)", 
+                               variable=op_3)
+        option_3.config(font = "Courier 9", 
+                        bg = "#673F69",
+                        fg = "#FB6D48")
+        option_3.pack(pady = 10)
+
+        option_4 = tk.Checkbutton(questions, 
+                               text = "(Option #4)", 
+                               command = lambda:check(1),
+                               variable=op_4)
+        option_4.config(font = "Courier 9", 
+                        bg = "#673F69",
+                        fg = "#FB6D48")
+        option_4.pack(pady = 10)
+
+#Next button: 
+        next_button = tk.Button(questions, 
+                                text = "Next Question", 
+                                command = final_page)
+        next_button.config(font = "Courier 9", 
+                        background = "#D74B76", 
+                        foreground = "#FB6D48", 
+                        height = 1, 
+                        width = 15)
+        next_button.pack()
+
+        questions.mainloop()
+
+
+#------------------------------------------------------
+#Final page, score
+def final_page():
+      pass
+      
 #------------------------------------------------------
 # ..
 

@@ -6,6 +6,8 @@ from tkinter import PhotoImage
 
 from quiz_questions import quiz_questions
 
+from tkinter import messagebox
+
 #------------------------------------------------------
 # Welcome Page
 
@@ -22,20 +24,21 @@ class welcomepage:
 #------------------------------------------------------
 # Entry box
         self.entrybox = Entry(master)
-        self.entrybox.get()
         self.entrybox.place(x= 270, y=195)
         self.entrybox.insert(0, "Enter your name here")
 
 #------------------------------------------------------
 # Continue Button
-        continue_button: Button = Button(master, text= "Continue", 
-                                         command = instructions)
+
+        continue_button: Button = Button(master, text= "Continue", command = instructions)
         continue_button.config(font = "Courier 9", 
                                 background = "#D74B76", 
                                 foreground = "#FB6D48", 
                                 height = 1, 
                                 width = 15)
         continue_button.place(x=275, y=240)
+
+        name = self.entrybox.get()  
         
 #------------------------------------------------------
 #Main window for instruction page
@@ -49,7 +52,7 @@ def instructions():
 #------------------------------------------------------
 #Title for Instruction Page
         Title = tk.Label(page, 
-                         text = "Welcome", 
+                         text = "Welcome," + name +"!", 
                          background = "#FFAF45")
         Title.config(font = "Courier 17", 
                      foreground = "#FB6D48")
@@ -88,84 +91,105 @@ def instructions():
 #------------------------------------------------------
 # Start of questions
 
-def questions():
-        master.destroy
-        questions = tk.Tk()
-        questions.title("Anime Quiz! (Questions)")
-        questions.geometry("640x360")
-        questions.configure(background="#FFAF45")
+quiz_questions = quiz_questions
+   
 
-#------------------------------------------------------
-# Start of questions:
+class Questions:
+    def __init__(self, master):
 
-        def check():
-              pass
+        self.current_question = 0
+        self.score = 0
 
-        question_label = tk.Label(questions, 
-                             text = "Question #XX", 
-                             bg = "#FFAF45")
-        question_label.config(font = "Courier 17", 
-                         fg = "#FB6D48")
-        question_label.pack(pady = 10)
+        self.master = master
+        self.master.title("Anime Quiz!")
+        self.master.geometry("700x360")
+        self.master.configure(background="#FFAF45")
 
-#Question options: 
-        op_1 = IntVar()
-        op_2 = IntVar()
-        op_3 = IntVar()
-        op_4 = IntVar()
+        self.question_label = Label(self.master, 
+                                    text = "", 
+                                    bg="#FFAF45", 
+                                    font = "Courier 17",
+                                    fg = "#FB6D48")
+        self.question_label.pack(pady=20)
 
-#Question options:
-        option_1 = tk.Checkbutton(questions, 
-                               text = "(Option #1)", 
-                               variable=op_1)
-        option_1.config(font = "Courier 9", 
-                        bg = "#673F69",
-                        fg = "#FB6D48")
-        option_1.pack(pady = 10)
+        self.choice_buttons = []
+        for i in range(4):
+            choices = Button(self.master, 
+                                   text = "", 
+                                   command = lambda i=i: self.answer_check(i))
+            choices.pack(pady=5)
+            self.choice_buttons.append(choices)
 
-        option_2 = tk.Checkbutton(questions, 
-                               text = "(Option #2)", 
-                               variable=op_2)
-        option_2.config(font = "Courier 9", 
-                        bg = "#673F69",
-                        fg = "#FB6D48")
-        option_2.pack(pady = 10)
-        
-        option_3 = tk.Checkbutton(questions, 
-                               text = "(Option #3)", 
-                               variable=op_3)
-        option_3.config(font = "Courier 9", 
-                        bg = "#673F69",
-                        fg = "#FB6D48")
-        option_3.pack(pady = 10)
+        self.right_wrong = Label(self.master, 
+                                 text="", 
+                                 bg="#FFAF45", 
+                                 fg = "#FB6D48")
+        self.right_wrong.pack(pady=10)
 
-        option_4 = tk.Checkbutton(questions, 
-                               text = "(Option #4)", 
-                               command = lambda:check(1),
-                               variable=op_4)
-        option_4.config(font = "Courier 9", 
-                        bg = "#673F69",
-                        fg = "#FB6D48")
-        option_4.pack(pady = 10)
+        self.score_label = Label(self.master, 
+                                 text="", 
+                                 bg="#FFAF45", 
+                                 fg = "#FB6D48")
+        self.score_label.pack()
 
-#Next button: 
-        next_button = tk.Button(questions, 
-                                text = "Next Question", 
-                                command = final_page)
-        next_button.config(font = "Courier 9", 
+        self.Continue = Button(self.master, 
+                                  text="Continue", 
+                                  command=self.next_question)
+        self.Continue.pack(pady=10)
+
+        self.show_next_question()
+
+    def show_next_question(self):
+        if self.current_question < len(quiz_questions):
+            question_data = quiz_questions[self.current_question]
+            self.question_label.config(text=question_data["question"])
+
+            for i, option in enumerate(question_data["options"]):
+                self.choice_buttons[i].config(text=option)
+
+            self.right_wrong.config(text="")
+            self.Continue.config(font = "Courier 9", 
                         background = "#D74B76", 
                         foreground = "#FB6D48", 
                         height = 1, 
-                        width = 15)
-        next_button.pack()
+                        width = 15, 
+                        state = DISABLED)
+        else:
+            self.show_result_page()
 
-        questions.mainloop()
+    def answer_check(self, choice_index):
+        selected_answer = self.choice_buttons[choice_index].cget("text")
+        correct_answer = quiz_questions[self.current_question]["answer"]
 
+        if selected_answer == correct_answer:
+            self.score += 1
+            self.right_wrong.config(text="Correct!", foreground="green")
+        else:
+            self.right_wrong.config(text="Incorrect!", foreground="red")
 
-#------------------------------------------------------
+        self.score_label.config(text=f"Score: {self.score}/{len(quiz_questions)}")
+        self.Continue.config(state=NORMAL)
+
+    def next_question(self):
+        self.current_question += 1
+        self.show_next_question()
+
+    def show_result_page(self):
+        result_page = tk.Toplevel(self.master)
+        result_page.title("Quiz Result")
+        result_page.geometry("300x150")
+        result_page.configure(background="#FFAF45")
+
+        result_label = Label(result_page, text=f"Quiz Completed!\nYour final score is: {self.score}/{len(quiz_questions)}", background="#FFAF45", foreground="#FB6D48", font="Courier 15")
+        result_label.pack(pady=20)
+
+        close_button = Button(result_page, text="Close", command=self.master.destroy)
+        close_button.pack(pady=10)
+
+#----------------------------------------------------
 #Final page, score
 def final_page():
-      pass
+    pass
       
 #------------------------------------------------------
 # ..
@@ -179,6 +203,9 @@ if __name__ == "__main__":
     bg_image.place(relheight=1, relwidth=1)
     welcomepage(master)
     master.mainloop()
+    root = tk.Tk()
+    app = Questions(root)
+    root.mainloop()
 
 
 

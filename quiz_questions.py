@@ -13,7 +13,7 @@ quiz_questions = [
         "answer":  "Toshinori Yagi"
     },
     {
-       "question": "(Naruto) - Who said this quote? \"I had no fear of defeat right from the start of this match, I believe it!\" ", 
+       "question": "(Naruto) \n Who said this quote? \"I had no fear of defeat right from the start of this match, I believe it!\" ", 
         "options": ["Kakashi", "Naruto", "Tsunade", "Minato"],
         "answer": "Naruto"
     },

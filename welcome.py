@@ -102,7 +102,7 @@ class Questions:
 
         self.master = master
         self.master.title("Anime Quiz!")
-        self.master.geometry("700x360")
+        self.master.geometry("1900x360")
         self.master.configure(background="#FFAF45")
 
         self.question_label = Label(self.master, 
@@ -116,19 +116,21 @@ class Questions:
         for i in range(4):
             choices = Button(self.master, 
                                    text = "", 
+                                   bg = "#673F69",
+                                   fg = "#FB6D48", 
                                    command = lambda i=i: self.answer_check(i))
             choices.pack(pady=5)
             self.choice_buttons.append(choices)
 
         self.right_wrong = Label(self.master, 
-                                 text="", 
-                                 bg="#FFAF45", 
+                                 text = "", 
+                                 bg = "#FFAF45", 
                                  fg = "#FB6D48")
         self.right_wrong.pack(pady=10)
 
         self.score_label = Label(self.master, 
                                  text="", 
-                                 bg="#FFAF45", 
+                                 bg = "#FFAF45", 
                                  fg = "#FB6D48")
         self.score_label.pack()
 
@@ -163,12 +165,16 @@ class Questions:
 
         if selected_answer == correct_answer:
             self.score += 1
-            self.right_wrong.config(text="Correct!", foreground="green")
+            self.right_wrong.config(text="Correct!", 
+                                    fg = "green", 
+                                    font = "Courier 12")
         else:
-            self.right_wrong.config(text="Incorrect!", foreground="red")
+            self.right_wrong.config(text="Incorrect!", 
+                                    fg = "red", 
+                                    font = "Courier 12")
 
-        self.score_label.config(text=f"Score: {self.score}/{len(quiz_questions)}")
-        self.Continue.config(state=NORMAL)
+        self.score_label.config(text = f"Score: {self.score}/{len(quiz_questions)}")
+        self.Continue.config(state = NORMAL)
 
     def next_question(self):
         self.current_question += 1

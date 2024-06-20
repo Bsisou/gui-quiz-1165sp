@@ -13,6 +13,7 @@ from tkinter import messagebox
 
 class welcomepage:
     def __init__(self, master):
+        self.master = master
 #------------------------------------------------------
 # Title
         welcome_title: Label = Label(master, text= "Anime Quiz!")
@@ -30,7 +31,8 @@ class welcomepage:
 #------------------------------------------------------
 # Continue Button
 
-        continue_button: Button = Button(master, text= "Continue", command = instructions)
+        continue_button: Button = Button(master, text= "Continue", 
+                                         command = self.instructions)
         continue_button.config(font = "Courier 9", 
                                 background = "#D74B76", 
                                 foreground = "#FB6D48", 
@@ -40,8 +42,9 @@ class welcomepage:
         
 #------------------------------------------------------
 #Main window for instruction page
-def instructions():
-        master.destroy()
+    def instructions(self):
+        username = self.entrybox.get()
+        self.master.destroy()
         page = tk.Tk()
         page.title("Anime Quiz! (Instructions)")
         page.geometry("350x250")
@@ -59,7 +62,7 @@ def instructions():
 #------------------------------------------------------
 # Users name (stored name from welcomepage class)
         name = tk.Label(page, 
-                        text = "Human")
+                        text = f"Hello, {username}!")
         name.config(font = "Courier 12", 
                     foreground = "#D74B76",
                     background = "#FFAF45")
@@ -76,7 +79,7 @@ def instructions():
 # Continue Button
         Continue = tk.Button(page, 
                              text = "Continue", 
-                             command = Questions)
+                             command = lambda: self.start_quiz(page, username))
         Continue.config(font = "Courier 9", 
                         background = "#D74B76", 
                         foreground = "#FB6D48", 
@@ -86,16 +89,24 @@ def instructions():
 
         page.mainloop()
 
+    
+    def start_quiz(self, page, username):
+        page.destroy()  # Close the instruction window
+        root = tk.Tk()
+        app = Questions(root, username)
+        root.mainloop()
+
 #------------------------------------------------------
 # Start of questions
 
 quiz_questions = quiz_questions
    
 class Questions:
-    def __init__(self, master):
+    def __init__(self, master, username):
 
         self.current_question = 0
         self.score = 0
+        self.username = username
 
         self.master = master
         self.master.title("Anime Quiz!")
@@ -207,6 +218,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = Questions(root)
     root.mainloop()
+    instructions()
 
 
 

@@ -218,7 +218,6 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = Questions(root)
     root.mainloop()
-    instructions()
 
 
 

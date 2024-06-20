@@ -37,8 +37,6 @@ class welcomepage:
                                 height = 1, 
                                 width = 15)
         continue_button.place(x=275, y=240)
-
-        name = self.entrybox.get()  
         
 #------------------------------------------------------
 #Main window for instruction page
@@ -52,7 +50,7 @@ def instructions():
 #------------------------------------------------------
 #Title for Instruction Page
         Title = tk.Label(page, 
-                         text = "Welcome," + name +"!", 
+                         text = "Welcome!", 
                          background = "#FFAF45")
         Title.config(font = "Courier 17", 
                      foreground = "#FB6D48")
@@ -61,7 +59,7 @@ def instructions():
 #------------------------------------------------------
 # Users name (stored name from welcomepage class)
         name = tk.Label(page, 
-                        text = "Users Name + (username)")
+                        text = "Human")
         name.config(font = "Courier 12", 
                     foreground = "#D74B76",
                     background = "#FFAF45")
@@ -69,7 +67,7 @@ def instructions():
 
 #------------------------------------------------------
 # Main Quiz Instructions 
-        steps = tk.Label(page, text = "Welcome to the Anime Quiz! \n You will be answering 25 randomised anime questions. \n These Questions will originate from popular Animes such as; \n One Piece, My Hero Acadamia and Naruto \n Good Luck! :)")
+        steps = tk.Label(page, text = "Welcome to the Anime Quiz! \n You will be answering randomised anime questions. \n These Questions will originate from popular Animes such as; \n One Piece, My Hero Acadamia and Naruto \n Good Luck! :)")
         steps.config(background = "#673F69", 
                      foreground = "#FB6D48")
         steps.pack(pady = 10)
@@ -78,7 +76,7 @@ def instructions():
 # Continue Button
         Continue = tk.Button(page, 
                              text = "Continue", 
-                             command = questions)
+                             command = Questions)
         Continue.config(font = "Courier 9", 
                         background = "#D74B76", 
                         foreground = "#FB6D48", 
@@ -86,14 +84,13 @@ def instructions():
                         width = 15)
         Continue.pack(pady = 10)
 
-        page.mainloop
+        page.mainloop()
 
 #------------------------------------------------------
 # Start of questions
 
 quiz_questions = quiz_questions
    
-
 class Questions:
     def __init__(self, master):
 
@@ -180,6 +177,8 @@ class Questions:
         self.current_question += 1
         self.show_next_question()
 
+#----------------------------------------------------
+# RESULTS/FINAL PAGE 
     def show_result_page(self):
         result_page = tk.Toplevel(self.master)
         result_page.title("Quiz Result")
@@ -189,13 +188,9 @@ class Questions:
         result_label = Label(result_page, text=f"Quiz Completed!\nYour final score is: {self.score}/{len(quiz_questions)}", background="#FFAF45", foreground="#FB6D48", font="Courier 15")
         result_label.pack(pady=20)
 
-        close_button = Button(result_page, text="Close", command=self.master.destroy)
+        close_button = Button(result_page, text = "Close", 
+                              command=self.master.destroy)
         close_button.pack(pady=10)
-
-#----------------------------------------------------
-#Final page, score
-def final_page():
-    pass
       
 #------------------------------------------------------
 # ..

@@ -13,7 +13,7 @@ class welcomepage: #start of quiz
         self.master = master
 #------------------------------------------------------
 # Title
-        welcome_title: Label = Label(master, text= "Anime Quiz!") # displays text "Anime Quiz!" in gui
+        welcome_title = Label(master, text= "Anime Quiz!") # displays text "Anime Quiz!" in gui
         welcome_title.place(x=230, y=100)
         welcome_title.config(font = "Courier 25 bold", 
                              foreground = "#FB6D48", 
@@ -28,7 +28,7 @@ class welcomepage: #start of quiz
 #------------------------------------------------------
 # Continue Button
 
-        continue_button: Button = Button(master, text= "Continue", 
+        continue_button = Button(master, text= "Continue", 
                                          command = self.instructions)# continue button that commands the next component to run
         continue_button.config(font = "Courier 9", 
                                 background = "#D74B76", 
@@ -36,11 +36,26 @@ class welcomepage: #start of quiz
                                 height = 1, 
                                 width = 15) # Conifgures the colour and dimensions of continue button
         continue_button.place(x=275, y=240)# places the orientation, (x and y) for continue button
+
+    def entry_boundary(self, input_text):
+        if len(input_text) <=15:
+            return True 
+        else:
+            return False
         
 #------------------------------------------------------
 #Main window for instruction page
     def instructions(self): # start of instructions component
         username = self.entrybox.get()# gets users name inputted from entry box
+
+
+        username = self.entrybox.get().strip()  
+        if username == "" or username == "Enter your name here": # checks if username is correct or not
+          
+            error = Label(self.master, text="Please enter your name! (Name must be 15 characters or less)", fg="red") # displays text in red "Please enter your name!"
+            error.place(x=170, y=300)
+            return
+
         self.master.destroy()# destroys previous component 
         page = tk.Tk()
         page.title("Anime Quiz! (Instructions)") # displays "Anime Quiz! (Instructions)" on the tab (outside of the gui) 
@@ -144,6 +159,9 @@ class Questions:
                                   command=self.next_question) # Continue button to command the next question to start
         self.Continue.pack(pady=10)
 
+        self.quiz_completed = False # checks if quiz is completed
+        self.result_page = None #created placeholder for result page
+
         self.show_next_question()
 
     def show_next_question(self):
@@ -162,7 +180,10 @@ class Questions:
                         width = 15, 
                         state = DISABLED) # displays continue button for next question
         else:
-            self.show_result_page() # in case all questions are finished it will display result page
+            if not self.quiz_completed:
+                self.show_result_page() # in case all questions are finished it will display result page
+                self.quiz_completed = True
+           
 
     def answer_check(self, choice_index):# checks whether answer is correct or wrong
         selected_answer = self.choice_buttons[choice_index].cget("text") #checks which button user selected
@@ -184,11 +205,17 @@ class Questions:
     def next_question(self): # continues to next question 
         self.current_question += 1 # changes current_question index by +1 every question 
         self.show_next_question() # displays show_next_question 
-
+    
+        if self.current_question == len(quiz_questions): #checks if quiz is completed before displaying result page
+            if not self.quiz_completed:
+                self.show_result_page()  # in case all questions are finished it will display result page
+                self.quiz_completed = True # changes placholder from False -> True
+            
 #----------------------------------------------------
 # RESULTS/FINAL PAGE 
     def show_result_page(self): # creates window above questions to display result page
-        result_page = tk.Toplevel(self.master) # "Toplevel" ensures that the window is above
+        if self.result_page is None:
+                    result_page = tk.Toplevel(self.master) # "Toplevel" ensures that the window is above
         result_page.title("Quiz Result") # changes title to "Quiz Result"
         result_page.geometry("300x150") # changes size of window
         result_page.configure(background="#FFAF45") # changes background colour 
@@ -201,7 +228,7 @@ class Questions:
         close_button.config(bg = "#D74B76", 
                             fg = "#FB6D48")
         close_button.pack(pady=10)
-      
+
 #------------------------------------------------------
 # ..
 
@@ -217,7 +244,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = Questions(root) # creates instance for Questions
     root.mainloop()
-
-
-
-        

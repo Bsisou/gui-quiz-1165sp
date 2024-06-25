@@ -8,7 +8,7 @@ from quiz_questions import quiz_questions
 #------------------------------------------------------
 # Welcome Page
 
-class welcomepage: #start of quiz
+class Welcomepages: #start of quiz
     def __init__(self, master):
         self.master = master
 #------------------------------------------------------
@@ -89,15 +89,15 @@ class welcomepage: #start of quiz
 
 #------------------------------------------------------
 # Continue Button
-        Continue = tk.Button(page, 
+        continueB = tk.Button(page, 
                              text = "Continue", 
                              command = lambda: self.start_quiz(page, username)) # Command to start the next component (start quiz) 
-        Continue.config(font = "Courier 9", 
+        continueB.config(font = "Courier 9", 
                         background = "#D74B76", 
                         foreground = "#FB6D48", 
                         height = 1, 
                         width = 15) # changes colours and font of continue button
-        Continue.pack(pady = 10)
+        continueB.pack(pady = 10)
 
         page.mainloop()
 
@@ -239,7 +239,7 @@ if __name__ == "__main__":
     image_path = PhotoImage(file="Image1.png") # sets Image1.png as background for "Anime Quiz!"
     bg_image = tk.Label(master, image = image_path) # points to path for background and displays background
     bg_image.place(relheight=1, relwidth=1) # places image to cover entire window
-    welcomepage(master) # calls welcomepage function
+    Welcomepages(master) # calls welcomepage function
     master.mainloop()
     root = tk.Tk()
     app = Questions(root) # creates instance for Questions

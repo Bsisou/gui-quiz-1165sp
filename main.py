@@ -14,10 +14,10 @@ class Welcomepages: #start of quiz
 #------------------------------------------------------
 # Title
         welcome_title = Label(master, text= "Anime Quiz!") # displays text "Anime Quiz!" in gui
-        welcome_title.place(x=230, y=100)
-        welcome_title.config(font = "Courier 25 bold", 
+        welcome_title.place(x=150, y=100)
+        welcome_title.config(font = "Courier 40 bold", 
                              foreground = "#FB6D48", 
-                             background = "#FFAF45") # Conifgures the colour and dimensions of the welcome title
+                             background = "#673F69") # Conifgures the colour and dimensions of the welcome title
 
 #------------------------------------------------------
 # Entry box
@@ -52,7 +52,10 @@ class Welcomepages: #start of quiz
         username = self.entrybox.get().strip()  
         if username == "" or username == "Enter your name here": # checks if username is correct or not
           
-            error = Label(self.master, text="Please enter your name! (Name must be 15 characters or less)", fg="red") # displays text in red "Please enter your name!"
+            error = Label(self.master, 
+                          text="Please enter your name! (Name must be 15 characters or less)", 
+                          fg="red", 
+                          bg = "#673F69") # displays text in red "Please enter your name!"
             error.place(x=170, y=300)
             return
 
@@ -66,7 +69,7 @@ class Welcomepages: #start of quiz
 #Title for Instruction Page
         Title = tk.Label(page, 
                          text = "Welcome!", 
-                         background = "#FFAF45") # displays welcome title at top of the page
+                         background = "#673F69") # displays welcome title at top of the page
         Title.config(font = "Courier 17", 
                      foreground = "#FB6D48") # changes font and colour of welcome title
         Title.pack()
@@ -127,7 +130,7 @@ class Questions:
 
         self.question_label = Label(self.master, 
                                     text = "", 
-                                    bg="#FFAF45", 
+                                    bg="#673F69", 
                                     font = "Courier 17",
                                     fg = "#FB6D48") # displays question_label (taken from quiz_questions.py)
         self.question_label.pack(pady=20)

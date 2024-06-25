@@ -223,7 +223,10 @@ class Questions:
         result_page.geometry("300x150") # changes size of window
         result_page.configure(background="#FFAF45") # changes background colour 
 
-        result_label = Label(result_page, text=f"Quiz Completed!\nYour final score is: {self.score}/{len(quiz_questions)}", background="#FFAF45", foreground="#FB6D48", font="Courier 15")
+        result_label = Label(result_page, text=f"Quiz Completed!\nYour final score is: {self.score}/{len(quiz_questions)}", 
+                             bg = "#673F69", 
+                             fg = "#FB6D48", 
+                             font="Courier 15")
         result_label.pack(pady=20) # displays "Quiz Completed!" and final score (taken from score index)
 
         close_button = Button(result_page, text = "Close", 

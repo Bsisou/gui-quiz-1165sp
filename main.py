@@ -16,13 +16,13 @@ class Welcomepages: #start of quiz
         welcome_title = Label(master, text= "Anime Quiz!") # displays text "Anime Quiz!" in gui
         welcome_title.place(x=150, y=100)
         welcome_title.config(font = "Courier 40 bold", 
-                             foreground = "#FB6D48", 
+                             foreground = "#D74B76", 
                              background = "#673F69") # Conifgures the colour and dimensions of the welcome title
 
 #------------------------------------------------------
 # Entry box
-        self.entrybox = Entry(master) # entry box for user to enter their name
-        self.entrybox.place(x= 270, y=195)
+        self.entrybox = Entry(master, width = 20, font = "Courier 12") # entry box for user to enter their name
+        self.entrybox.place(x= 230, y=195)
         self.entrybox.insert(0, "Enter your name here")# text that displays "Enter your name here" in entry box
 
 #------------------------------------------------------
@@ -30,12 +30,12 @@ class Welcomepages: #start of quiz
 
         continue_button = Button(master, text= "Continue", 
                                          command = self.instructions)# continue button that commands the next component to run
-        continue_button.config(font = "Courier 9", 
-                                background = "#D74B76", 
-                                foreground = "#FB6D48", 
+        continue_button.config(font = "Courier 12", 
+                                background = "#673F69", 
+                                foreground = "#D74B76", 
                                 height = 1, 
                                 width = 15) # Conifgures the colour and dimensions of continue button
-        continue_button.place(x=275, y=240)# places the orientation, (x and y) for continue button
+        continue_button.place(x=250, y=240)# places the orientation, (x and y) for continue button
 
     def entry_boundary(self, input_text):
         if len(input_text) <=15:
@@ -55,8 +55,9 @@ class Welcomepages: #start of quiz
             error = Label(self.master, 
                           text="Please enter your name! (Name must be 15 characters or less)", 
                           fg="red", 
-                          bg = "#673F69") # displays text in red "Please enter your name!"
-            error.place(x=170, y=300)
+                          bg = "#673F69", 
+                          font = "Courier 11") # displays text in red "Please enter your name!"
+            error.place(x=60, y=300)
             return
 
         self.master.destroy()# destroys previous component 
@@ -80,7 +81,7 @@ class Welcomepages: #start of quiz
                         text = f"Hello, {username}!") # displays "Hello, (Users name)" in text
         name.config(font = "Courier 12", 
                     foreground = "#D74B76",
-                    background = "#FFAF45") # changes colours and font of text 
+                    background = "#673F69") # changes colours and font of text 
         name.pack(pady = 10)
 
 #------------------------------------------------------
@@ -95,9 +96,9 @@ class Welcomepages: #start of quiz
         continueB = tk.Button(page, 
                              text = "Continue", 
                              command = lambda: self.start_quiz(page, username)) # Command to start the next component (start quiz) 
-        continueB.config(font = "Courier 9", 
-                        background = "#D74B76", 
-                        foreground = "#FB6D48", 
+        continueB.config(font = "Courier 11", 
+                        background = "#673F69", 
+                        foreground = "#D74B76", 
                         height = 1, 
                         width = 15) # changes colours and font of continue button
         continueB.pack(pady = 10)
@@ -173,12 +174,13 @@ class Questions:
             self.question_label.config(text=question_data["question"]) # displays "question" from "quiz_questions.py"
 
             for i, option in enumerate(question_data["options"]): # displays next set of questions from "options" in "quiz_questions.py"
-                self.choice_buttons[i].config(text=option)
+                self.choice_buttons[i].config(text=option, 
+                                              font = "Courier 11")
 
             self.right_wrong.config(text="") # clears right or wrong message from last question
-            self.continue_questions.config(font = "Courier 9", 
-                        background = "#D74B76", 
-                        foreground = "#FB6D48", 
+            self.continue_questions.config(font = "Courier 13", 
+                        background = "#673F69", 
+                        foreground = "#D74B76", 
                         height = 1, 
                         width = 15, 
                         state = DISABLED) # displays continue button for next question

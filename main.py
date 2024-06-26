@@ -67,12 +67,12 @@ class Welcomepages: #start of quiz
 
 #------------------------------------------------------
 #Title for Instruction Page
-        Title = tk.Label(page, 
+        title_instructions = tk.Label(page, 
                          text = "Welcome!", 
                          background = "#673F69") # displays welcome title at top of the page
-        Title.config(font = "Courier 17", 
+        title_instructions.config(font = "Courier 17", 
                      foreground = "#FB6D48") # changes font and colour of welcome title
-        Title.pack()
+        title_instructions.pack()
 
 #------------------------------------------------------
 # Users name (stored name from welcomepage class)
@@ -157,10 +157,10 @@ class Questions:
                                  fg = "#FB6D48") # displays current score below right_wrong label
         self.score_label.pack()
 
-        self.Continue = Button(self.master, 
+        self.continue_questions = Button(self.master, 
                                   text="Continue", 
                                   command=self.next_question) # Continue button to command the next question to start
-        self.Continue.pack(pady=10)
+        self.continue_questions.pack(pady=10)
 
         self.quiz_completed = False # checks if quiz is completed
         self.result_page = None #created placeholder for result page
@@ -176,7 +176,7 @@ class Questions:
                 self.choice_buttons[i].config(text=option)
 
             self.right_wrong.config(text="") # clears right or wrong message from last question
-            self.Continue.config(font = "Courier 9", 
+            self.continue_questions.config(font = "Courier 9", 
                         background = "#D74B76", 
                         foreground = "#FB6D48", 
                         height = 1, 
@@ -203,7 +203,7 @@ class Questions:
                                     font = "Courier 12") # displays incorrect in red
 
         self.score_label.config(text = f"Score: {self.score}/{len(quiz_questions)}") # changes score label if question si correct
-        self.Continue.config(state = NORMAL) # displays continue button again
+        self.continue_questions.config(state = NORMAL) # displays continue button again
 
     def next_question(self): # continues to next question 
         self.current_question += 1 # changes current_question index by +1 every question 
